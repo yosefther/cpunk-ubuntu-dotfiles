@@ -8,6 +8,8 @@ configuration {
     drun-use-desktop-cache: false;
     click-to-exit: true;
     font: "JetBrains Mono 12";
+    kb-move-word-back: "Alt+b";
+    kb-move-word-forward: "Alt+f";
     kb-mode-next: "Control+Right,Control+Tab";
     kb-mode-previous: "Control+Left,Control+ISO_Left_Tab";
 }
