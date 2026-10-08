@@ -36,7 +36,7 @@ This handbook is also available from Super + K or the CpUnk menu.
 Menus use opaque charcoal surfaces, white text, and red selection highlights. Settings uses an opaque dark GTK theme; the app launcher includes a Settings entry that works in Hyprland. Network and sound panel buttons use the same settings wrapper. GTK styling is saved in `~/.config/gtk-3.0/gtk.css` and `~/.config/gtk-4.0/gtk.css`.
 
 
-- **Wallpaper:** CpUnk menu → Wallpaper. Choices are the upstream `Arcyx.png`, `Bxry2.png`, `Cryox3.png`, and `Draxo.png` images. The selection is saved in `~/.config/cpunk/hyprpaper.conf`.
+- **Wallpaper:** CpUnk menu → Wallpaper. Choices are the upstream `Arcyx.png`, `Bxry2.png`, `Cryox3.png`, and `Draxo.png` images. The selection is saved in `~/.config/cpunk/hyprpaper.conf`. Add your own PNG, JPG, JPEG, or WebP images to `~/.local/share/cpunk/wallpapers/`; they appear automatically in this menu. Personal images stay local and are not included in this repository.
 - **Keyboard:** edit `input.kb_layout` in `~/.config/cpunk/hyprland.conf`. The snapshot uses `us`.
 - **Monitor:** the default is preferred resolution, automatic placement, scale 1. Adjust `monitor` for your displays.
 - **Browser:** Super+B expects an existing `brave-browser` installation. Edit this binding to `firefox` or another browser if necessary; Brave is not installed by this script.

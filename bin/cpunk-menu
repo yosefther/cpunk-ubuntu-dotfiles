@@ -9,9 +9,16 @@ def choose(items,prompt):
 a=choose(['Applications','Terminal','Files','Settings','Wallpaper','Handbook','Lock screen','Log out'],'CPUNK // Menu')
 cmds={'Applications':['cpunk-launcher'],'Terminal':['cpunk-terminal'],'Files':['nautilus'],'Settings':['cpunk-settings'],'Handbook':['xdg-open',str(Path.home()/'.local/share/cpunk/handbook.html')],'Lock screen':['hyprlock','-c',str(Path.home()/'.config/cpunk/hyprlock.conf')]}
 if a=='Wallpaper':
- w=choose(['Arcyx.png','Bxry2.png','Cryox3.png','Draxo.png'],'CPUNK // Wallpaper')
- if w in ['Arcyx.png','Bxry2.png','Cryox3.png','Draxo.png']:
-  path=Path.home()/'.local/share/cpunk/source/backgrounds'/w
+ wallpapers={w:Path.home()/'.local/share/cpunk/source/backgrounds'/w for w in ['Arcyx.png','Bxry2.png','Cryox3.png','Draxo.png']}
+ personal=Path.home()/'.local/share/cpunk/wallpapers'
+ if personal.is_dir():
+  for image in sorted(personal.iterdir(),key=lambda p:p.name.casefold()):
+   if image.is_file() and image.suffix.lower() in {'.png','.jpg','.jpeg','.webp'}:
+    wallpapers[image.name]=image
+ wallpapers={name:path for name,path in wallpapers.items() if path.is_file()}
+ w=choose(list(wallpapers),'CPUNK // Wallpaper')
+ if w in wallpapers:
+  path=wallpapers[w]
   conf=Path.home()/'.config/cpunk/hyprpaper.conf'
   conf.write_text('splash = false\nwallpaper {\n monitor =\n path = '+str(path)+'\n fit_mode = cover\n}\n')
   subprocess.run(['hyprctl','hyprpaper','wallpaper',', '+str(path)+', cover'])
