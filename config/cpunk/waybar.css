@@ -1,0 +1,9 @@
+* { font-family: "JetBrains Mono"; font-size: 12px; min-height: 0; border: none; border-radius: 0; }
+window#waybar { background: #040303; color: #ffffff; }
+#custom-menu { color: #F82A2A; font-weight: bold; padding: 0 10px; }
+#clock, #cpu, #memory, #network, #pulseaudio, #tray, #custom-lock { padding: 0 7px; }
+#cpu, #memory { color: #aaacac; }
+#workspaces button { padding: 0 9px; background: transparent; color: #7f6e6e; }
+#workspaces button.active { color: #ffffff; border-bottom: 2px solid #F82A2A; }
+#workspaces button.urgent { color: #F82A2A; }
+tooltip { background: #040303; border: 1px solid #7f6e6e; color: #ffffff; }

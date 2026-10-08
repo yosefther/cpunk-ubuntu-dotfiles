@@ -1,0 +1,2 @@
+#!/bin/sh
+exec kitty --config "$HOME/.config/cpunk/kitty.conf" tmux new-session -A -s main

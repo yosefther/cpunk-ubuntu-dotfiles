@@ -1,0 +1,3 @@
+/* Ubuntu adaptation: readable inactive results, keep the source palette. */
+window .item-box label, window .item-box * { color: #aaacac; }
+window .box-wrapper { min-width: 620px; }

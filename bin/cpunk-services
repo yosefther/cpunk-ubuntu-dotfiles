@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+import subprocess,os,time
+from pathlib import Path
+root=Path.home(); cfg=root/'.config/cpunk'; log=root/'.local/state/cpunk';log.mkdir(parents=True,exist_ok=True)
+if os.environ.get('CPUNK_PREVIEW')!='1':
+ subprocess.run(['dbus-update-activation-environment','--systemd','WAYLAND_DISPLAY','XDG_CURRENT_DESKTOP','XDG_SESSION_TYPE','GSK_RENDERER','GTK_THEME'],check=False)
+if os.environ.get('CPUNK_PREVIEW')!='1':
+ subprocess.run(['systemctl','--user','restart','xdg-desktop-portal.service'],check=False)
+commands=[['elephant'],['walker','--gapplication-service'],['waybar','-c',str(cfg/'waybar.json'),'-s',str(cfg/'waybar.css')],['hyprpaper','-c',str(cfg/'hyprpaper.conf')]]
+if os.environ.get('CPUNK_PREVIEW')!='1':
+ commands.extend([['mako','-c',str(cfg/'mako.conf')],['/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1'],['swayidle','-w','timeout','600','hyprlock -c '+str(cfg/'hyprlock.conf'),'before-sleep','hyprlock -c '+str(cfg/'hyprlock.conf')]])
+children=[]
+try:
+ for cmd in commands:
+  f=(log/(Path(cmd[0]).name+'.log')).open('w')
+  child_env=os.environ.copy()
+  if cmd[0]=='walker':child_env['GSK_DEBUG']='full-redraw'
+  children.append(subprocess.Popen(cmd,stdout=f,stderr=f,env=child_env));f.close()
+ sig=os.environ.get('HYPRLAND_INSTANCE_SIGNATURE','')
+ socket=Path(os.environ['XDG_RUNTIME_DIR'])/'hypr'/sig/'.socket.sock'
+ while socket.exists():time.sleep(2)
+finally:
+ for child in children:
+  if child.poll() is None:child.terminate()
+ for child in children:
+  try:child.wait(timeout=3)
+  except subprocess.TimeoutExpired:child.kill()

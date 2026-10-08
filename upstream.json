@@ -1,0 +1,32 @@
+{
+  "theme": {
+    "url": "https://github.com/stannorbvb-cmd/cpunk.git",
+    "commit": "c4d726bea9e6e4b3feb477c052e25bfcb2832ea4"
+  },
+  "runtime": [
+    {
+      "url": "https://github.com/abenz1267/walker/releases/download/v2.17.2/walker-v2.17.2-x86_64-unknown-linux-gnu.tar.gz",
+      "sha256": "57e68d1f9f14782f1ae0f1c704509749a545a92531b8788b76b16bc29fcc5c19",
+      "member": "walker",
+      "target": ".local/bin/walker"
+    },
+    {
+      "url": "https://github.com/abenz1267/elephant/releases/download/v2.22.1/menus-linux-amd64.tar.gz",
+      "sha256": "1c0542ca22a3bf580f5d0e39d8b964622f58b45bb4aeb8b1feb9a319490f15a6",
+      "member": "menus-linux-amd64.so",
+      "target": ".config/elephant/providers/menus-linux-amd64.so"
+    },
+    {
+      "url": "https://github.com/abenz1267/elephant/releases/download/v2.22.1/desktopapplications-linux-amd64.tar.gz",
+      "sha256": "a185897cae065c036a2b2a5beac08201e0a233ad51587b9a553428434225c75a",
+      "member": "desktopapplications-linux-amd64.so",
+      "target": ".config/elephant/providers/desktopapplications-linux-amd64.so"
+    },
+    {
+      "url": "https://github.com/abenz1267/elephant/releases/download/v2.22.1/elephant-linux-amd64.tar.gz",
+      "sha256": "53098cd67fbd0eb256d02594b06ef6817031ed93e93911126bea9904b33ad775",
+      "member": "elephant-linux-amd64",
+      "target": ".local/bin/elephant"
+    }
+  ]
+}

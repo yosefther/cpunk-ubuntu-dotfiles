@@ -1,0 +1,3 @@
+auto_detect_launch_prefix = false
+git_on_demand = false
+terminal_cmd = '@HOME@/.local/bin/cpunk-terminal'

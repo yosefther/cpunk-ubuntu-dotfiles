@@ -1,0 +1,10 @@
+#!/bin/sh
+export PATH="$HOME/.local/bin:$PATH"
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export GSK_RENDERER=cairo
+export GTK_THEME=Yaru-red-dark
+export XCURSOR_THEME=Yaru
+export XCURSOR_SIZE=24
+exec /usr/bin/start-hyprland -- --config "$HOME/.config/cpunk/hyprland.conf"

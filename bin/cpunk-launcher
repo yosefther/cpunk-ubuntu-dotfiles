@@ -1,0 +1,6 @@
+#!/bin/sh
+export GSK_RENDERER=cairo
+export PATH="$HOME/.local/bin:$PATH"
+if ! walker --provider desktopapplications; then
+    exec wofi --show drun --style "$HOME/.config/cpunk/wofi.css" --width 640 --height 440 --prompt "CPUNK // Applications"
+fi

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=CpUnk (Hyprland)
+Comment=CpUnk cyberpunk desktop on Ubuntu
+Exec=@HOME@/.local/bin/cpunk-session
+TryExec=/usr/bin/start-hyprland
+Type=Application
+DesktopNames=Hyprland

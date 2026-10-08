@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+import subprocess,os
+from pathlib import Path
+os.environ['GSK_RENDERER']='cairo'
+os.environ['PATH']=str(Path.home()/'.local/bin')+':'+os.environ['PATH']
+def choose(items,prompt):
+ r=subprocess.run(['walker','--dmenu','--placeholder',prompt],input='\n'.join(items)+'\n',text=True,capture_output=True)
+ return r.stdout.strip() if r.returncode==0 else ''
+a=choose(['Applications','Terminal','Files','Settings','Wallpaper','Handbook','Lock screen','Log out'],'CPUNK // Menu')
+cmds={'Applications':['cpunk-launcher'],'Terminal':['cpunk-terminal'],'Files':['nautilus'],'Settings':['env','XDG_CURRENT_DESKTOP=GNOME','gnome-control-center'],'Handbook':['xdg-open',str(Path.home()/'.local/share/cpunk/handbook.html')],'Lock screen':['hyprlock','-c',str(Path.home()/'.config/cpunk/hyprlock.conf')]}
+if a=='Wallpaper':
+ w=choose(['Arcyx.png','Bxry2.png','Cryox3.png','Draxo.png'],'CPUNK // Wallpaper')
+ if w in ['Arcyx.png','Bxry2.png','Cryox3.png','Draxo.png']:
+  path=Path.home()/'.local/share/cpunk/source/backgrounds'/w
+  conf=Path.home()/'.config/cpunk/hyprpaper.conf'
+  conf.write_text('splash = false\nwallpaper {\n monitor =\n path = '+str(path)+'\n fit_mode = cover\n}\n')
+  subprocess.run(['hyprctl','hyprpaper','wallpaper',', '+str(path)+', cover'])
+elif a=='Log out':
+ if choose(['Cancel','Log out'],'Save your work before logging out')=='Log out':subprocess.run(['hyprctl','dispatch','exit'])
+elif a in cmds:subprocess.Popen(cmds[a],start_new_session=True)

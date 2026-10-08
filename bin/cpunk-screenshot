@@ -1,0 +1,5 @@
+#!/bin/sh
+selection=$(slurp) || exit 0
+mkdir -p "$HOME/Pictures/Screenshots"
+image="$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png"
+grim -g "$selection" "$image" && notify-send "Screenshot saved" "$image"

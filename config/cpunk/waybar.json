@@ -1,0 +1,62 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 28,
+  "spacing": 8,
+  "modules-left": [
+    "custom/menu",
+    "clock"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "network",
+    "pulseaudio",
+    "tray",
+    "custom/lock"
+  ],
+  "custom/menu": {
+    "format": "CPUNK",
+    "tooltip": "Menu: Super + Alt + Space",
+    "on-click": "@HOME@/.local/bin/cpunk-menu"
+  },
+  "clock": {
+    "format": "{:%A %I:%M %p}",
+    "tooltip-format": "{:%Y-%m-%d}"
+  },
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": 3
+    }
+  },
+  "cpu": {
+    "format": "CPU {usage}%"
+  },
+  "memory": {
+    "format": "RAM {percentage}%"
+  },
+  "network": {
+    "format-ethernet": "NET {ipaddr}",
+    "format-wifi": "WIFI {signalStrength}%",
+    "format-disconnected": "OFFLINE",
+    "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center network"
+  },
+  "pulseaudio": {
+    "format": "VOL {volume}%",
+    "format-muted": "MUTED",
+    "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center sound",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "tray": {
+    "spacing": 8
+  },
+  "custom/lock": {
+    "format": "LOCK",
+    "on-click": "hyprlock -c @HOME@/.config/cpunk/hyprlock.conf"
+  }
+}
