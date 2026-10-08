@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Search clipboard history, copy exact bytes, and preview copied images."""
 import os
+import hashlib
 from pathlib import Path
 import subprocess
 import sys
@@ -8,7 +9,9 @@ import sys
 os.umask(0o077)
 HOME = Path.home()
 os.environ['PATH'] = str(HOME / '.local/bin') + ':' + os.environ['PATH']
-CACHE = Path(os.environ.get('XDG_RUNTIME_DIR', '/tmp')) / ('cpunk-clipboard-previews-' + str(os.getuid()))
+database_root = os.environ.get('XDG_CACHE_HOME', str(HOME / '.cache'))
+namespace = hashlib.sha256(database_root.encode()).hexdigest()[:12]
+CACHE = Path(os.environ.get('XDG_RUNTIME_DIR', '/tmp')) / ('cpunk-clipboard-previews-' + str(os.getuid()) + '-' + namespace)
 CACHE.mkdir(mode=0o700, exist_ok=True)
 
 

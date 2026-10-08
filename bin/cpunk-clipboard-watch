@@ -10,12 +10,12 @@ import time
 os.umask(0o077)
 os.environ['PATH'] = str(Path.home() / '.local/bin') + ':' + os.environ['PATH']
 runtime = Path(os.environ['XDG_RUNTIME_DIR'])
-lock = (runtime / 'cpunk-clipboard-watch.lock').open('w')
+lock = (runtime / 'cpunk-clipboard-watch.lock').open('a+')
 try:
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
 except BlockingIOError:
     raise SystemExit(0)
-lock.write(str(os.getpid())); lock.flush()
+lock.seek(0); lock.truncate(); lock.write(str(os.getpid())); lock.flush()
 socket = runtime / 'hypr' / os.environ['HYPRLAND_INSTANCE_SIGNATURE'] / '.socket.sock'
 children = []
 running = True
