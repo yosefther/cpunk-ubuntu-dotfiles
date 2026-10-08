@@ -61,6 +61,9 @@ The full [handbook](docs/HANDBOOK.md) is included, along with a browser-readable
 
 ## Customize
 
+Menus use opaque charcoal surfaces, white text, and red selection highlights. Settings uses an opaque dark GTK theme; the app launcher includes a Settings entry that works in Hyprland. Network and sound panel buttons use the same settings wrapper. GTK styling is saved in `~/.config/gtk-3.0/gtk.css` and `~/.config/gtk-4.0/gtk.css`.
+
+
 - **Wallpaper:** CpUnk menu → Wallpaper. Choices are the upstream `Arcyx.png`, `Bxry2.png`, `Cryox3.png`, and `Draxo.png` images. The selection is saved in `~/.config/cpunk/hyprpaper.conf`.
 - **Keyboard:** edit `input.kb_layout` in `~/.config/cpunk/hyprland.conf`. The snapshot uses `us`.
 - **Monitor:** the default is preferred resolution, automatic placement, scale 1. Adjust `monitor` for your displays.

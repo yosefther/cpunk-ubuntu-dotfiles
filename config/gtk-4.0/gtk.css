@@ -1,0 +1,15 @@
+/* CpUnk: opaque GTK settings, dialogs and popovers. */
+@define-color accent_bg_color #a32132;
+@define-color accent_color #ff6878;
+@define-color accent_fg_color #ffffff;
+@define-color window_bg_color #17191f;
+@define-color window_fg_color #f5f6fa;
+@define-color view_bg_color #20232b;
+@define-color view_fg_color #f5f6fa;
+@define-color headerbar_bg_color #23262f;
+@define-color sidebar_bg_color #20232b;
+@define-color popover_bg_color #23262f;
+@define-color dialog_bg_color #23262f;
+window.background { background-color: #17191f; color: #f5f6fa; }
+headerbar { background-color: #23262f; }
+popover.background > contents { background-color: #23262f; color: #f5f6fa; }

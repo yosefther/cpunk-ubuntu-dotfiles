@@ -1,2 +1,8 @@
+/* Solid CpUnk fallback menu. */
 * { font-family: "JetBrains Mono"; font-size: 14px; }
-#entry:selected { background-color: #7f6e6e; color: #ffffff; }
+window { background: #17191f; border: 2px solid #f82a2a; border-radius: 6px; }
+#outer-box, #inner-box, #scroll { background: #17191f; }
+#input { background: #23262f; color: #f5f6fa; border: 1px solid #555b68; }
+#entry { background: #17191f; color: #f5f6fa; }
+#entry:selected { background: #a32132; color: #ffffff; }
+#text { color: #f5f6fa; }

@@ -1,3 +1,26 @@
-/* Ubuntu adaptation: readable inactive results, keep the source palette. */
-window .item-box label, window .item-box * { color: #aaacac; }
-window .box-wrapper { min-width: 620px; }
+/* Solid CpUnk menus: charcoal surfaces and red selection. */
+window .box-wrapper {
+    background: #17191f;
+    border: 2px solid #f82a2a;
+    border-radius: 6px;
+    min-width: 620px;
+    box-shadow: none;
+    opacity: 1;
+}
+window .search-container, window .preview {
+    background: #23262f;
+    border: 1px solid #555b68;
+    box-shadow: none;
+}
+window .list-box, window scrolledwindow { background: #17191f; }
+window .item-box { background: #17191f; border-left: 2px solid #17191f; }
+window .item-box label, window .item-box *, window .input { color: #f5f6fa; }
+window .item-box .item-sub, window .item-box .item-description { color: #b6bcc9; }
+window child:selected, window child:selected .item-box {
+    background: #a32132;
+    border-left-color: #ff6878;
+    box-shadow: none;
+}
+window child:selected .item-box label, window child:selected .item-box * { color: #ffffff; }
+scrollbar { background: #17191f; }
+scrollbar slider { background: #626a7c; }

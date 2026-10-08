@@ -1,0 +1,3 @@
+/* CpUnk: opaque GTK menus and dialogs. */
+menu, .menu, popover.background { background-color: #23262f; color: #f5f6fa; }
+menuitem:hover { background-color: #a32132; color: #ffffff; }

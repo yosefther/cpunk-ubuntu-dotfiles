@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Settings
+Comment=System settings with the CpUnk dark theme
+Exec=@HOME@/.local/bin/cpunk-settings
+Icon=org.gnome.Settings
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupNotify=true
+DBusActivatable=false

@@ -57,7 +57,9 @@ def main():
     writes = {}
     for p in (REPO / 'config').rglob('*'):
         if p.is_file():
-            writes['.config/' + p.relative_to(REPO / 'config').as_posix()] = (
+            relative = p.relative_to(REPO / 'config').as_posix()
+            destination = '.local/share/' + relative if relative.startswith('applications/') else '.config/' + relative
+            writes[destination] = (
                 p.read_text().replace('@HOME@', str(home)).encode(), 0o644)
     for p in (REPO / 'bin').iterdir():
         if p.is_file():

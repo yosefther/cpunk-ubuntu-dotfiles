@@ -1,0 +1,5 @@
+#!/bin/sh
+export GSK_RENDERER=cairo
+export GTK_THEME=Adwaita:dark
+export XDG_CURRENT_DESKTOP=GNOME
+exec /usr/bin/gnome-control-center "$@"

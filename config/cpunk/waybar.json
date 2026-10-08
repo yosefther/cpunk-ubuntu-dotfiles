@@ -44,12 +44,12 @@
     "format-ethernet": "NET {ipaddr}",
     "format-wifi": "WIFI {signalStrength}%",
     "format-disconnected": "OFFLINE",
-    "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center network"
+    "on-click": "@HOME@/.local/bin/cpunk-settings network"
   },
   "pulseaudio": {
     "format": "VOL {volume}%",
     "format-muted": "MUTED",
-    "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center sound",
+    "on-click": "@HOME@/.local/bin/cpunk-settings sound",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
   "tray": {
