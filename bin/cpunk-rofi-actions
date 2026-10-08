@@ -38,6 +38,7 @@ def wallpapers():
 
 
 COMMANDS = {
+    'clipboard': ('Clipboard history', 'edit-paste', ['cpunk-clipboard']),
     'settings': ('Settings', 'preferences-system', ['cpunk-settings']),
     'network': ('Network settings', 'network-wired', ['cpunk-settings', 'network']),
     'sound': ('Sound settings', 'audio-volume-high', ['cpunk-settings', 'sound']),

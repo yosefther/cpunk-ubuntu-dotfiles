@@ -24,7 +24,8 @@ Ubuntu / Hyprland. Super means the Windows-logo key.
 | Super + K | Open the handbook |
 | Super + Shift + R | Reload configuration |
 | Super + Shift + E | Open the menu containing logout |
-| Print Screen | Select a screenshot area; save to `~/Pictures/Screenshots` |
+| Super + Shift + V | Search clipboard history and copy an item again |
+| Print Screen | Select an area; copy the screenshot and save it under `~/Pictures/Screenshots` |
 | Ctrl + Alt + Shift + T | Cairo/Ptyxis fallback terminal |
 
 Use **Esc** to dismiss menus. The idle timer locks after ten minutes. Test locking/unlocking on your first login. Rebooting ends running tmux sessions; Ctrl+B, then D detaches without ending them.
@@ -32,6 +33,8 @@ Use **Esc** to dismiss menus. The idle timer locks after ten minutes. Test locki
 This handbook is also available from Super + K or the CpUnk menu.
 
 Click **Apps** at the top-left of the panel, or press **Super + Space**. Switch tabs with **Ctrl + Left/Right** or **Ctrl + Tab/Shift + Ctrl + Tab**. Use the arrow keys to select an item and **Enter** to open it. Click **Windows** to find a running app and jump to its workspace. **System** contains settings and session controls. **Wallpapers** shows previews of the built-in and personal images. Use **Esc** to close the menu. Log out, restart, and shutdown require confirmation.
+
+Clipboard history starts with the CpUnk session and keeps up to 200 copied text or image items locally. Open it with **Super + Shift + V**, the panel's **Clipboard** button, or **Apps → System → Clipboard history**. Selecting an item copies it again; use **Ctrl + V** to paste. Choose **Clear clipboard history** in that menu to erase the saved history.
 
 ## Customize
 

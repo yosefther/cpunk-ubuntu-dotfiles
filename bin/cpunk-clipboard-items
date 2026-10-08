@@ -1,0 +1,111 @@
+#!/usr/bin/python3
+"""Search clipboard history, copy exact bytes, and preview copied images."""
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+os.umask(0o077)
+HOME = Path.home()
+os.environ['PATH'] = str(HOME / '.local/bin') + ':' + os.environ['PATH']
+CACHE = Path(os.environ.get('XDG_RUNTIME_DIR', '/tmp')) / ('cpunk-clipboard-previews-' + str(os.getuid()))
+CACHE.mkdir(mode=0o700, exist_ok=True)
+
+
+def header(key, value):
+    print('\0' + key + '\x1f' + value)
+
+
+def row(label, info, icon='edit-paste', selectable=True):
+    label = label.replace('\n', ' ').replace('\0', '').replace('\x1f', ' ')
+    data = 'info\x1f' + info + '\x1ficon\x1f' + icon
+    if not selectable:
+        data += '\x1fnonselectable\x1ftrue'
+    print(label + '\0' + data)
+
+
+def listing():
+    p = subprocess.run(['cpunk-cliphist', 'list'], capture_output=True, text=True)
+    if p.returncode:
+        return []
+    return [line.split('\t', 1) for line in p.stdout.splitlines() if '\t' in line]
+
+
+def preview(item_id):
+    target = CACHE / (item_id + '.png')
+    if target.exists():
+        return str(target)
+    try:
+        payload = subprocess.check_output(['cpunk-cliphist', 'decode'], input=item_id.encode())
+        import gi
+        gi.require_version('GdkPixbuf', '2.0')
+        from gi.repository import GdkPixbuf
+        loader = GdkPixbuf.PixbufLoader()
+        loader.set_size(96, 96)
+        loader.write(payload)
+        loader.close()
+        loader.get_pixbuf().savev(str(target), 'png', [], [])
+        return str(target)
+    except Exception:
+        return 'image-x-generic'
+
+
+def image_mime(payload):
+    """Return the image MIME type detected by GdkPixbuf, if available."""
+    try:
+        import gi
+        gi.require_version('GdkPixbuf', '2.0')
+        from gi.repository import GdkPixbuf
+        loader = GdkPixbuf.PixbufLoader()
+        loader.write(payload)
+        loader.close()
+        mime_types = loader.get_format().get_mime_types()
+        return mime_types[0] if mime_types else None
+    except Exception:
+        return None
+
+
+def render():
+    header('no-custom', 'true')
+    header('message', 'Select an item to copy it again, then paste with Ctrl+V.')
+    items = listing()
+    active_ids = {item_id for item_id, _ in items}
+    for cached in CACHE.glob('*.png'):
+        if cached.stem not in active_ids:
+            cached.unlink()
+    for item_id, text in items:
+        if not item_id.isdigit():
+            continue
+        image = text.startswith('[[ binary data')
+        icon = preview(item_id) if image else 'edit-paste'
+        row(text, item_id, icon)
+    if not items:
+        row('Nothing copied yet — copy text or take a screenshot first', '', 'dialog-information', False)
+    row('Clear clipboard history…', 'clear', 'edit-clear')
+
+
+info = os.environ.get('ROFI_INFO', '')
+if os.environ.get('ROFI_RETV') != '1':
+    render()
+elif info == 'clear':
+    header('clear', 'true')
+    header('no-custom', 'true')
+    header('message', 'Clear all saved clipboard history?')
+    row('Cancel', 'cancel', 'dialog-cancel')
+    row('Confirm clear history', 'confirm-clear', 'edit-clear')
+elif info == 'confirm-clear':
+    subprocess.run(['cpunk-cliphist', 'wipe'], check=True, stdout=subprocess.DEVNULL)
+    for p in CACHE.glob('*.png'):
+        p.unlink()
+    header('clear', 'true')
+    render()
+elif info.isdigit() and info in {row[0] for row in listing()}:
+    payload = subprocess.check_output(['cpunk-cliphist', 'decode'], input=info.encode())
+    command = ['wl-copy']
+    mime_type = image_mime(payload)
+    if mime_type:
+        command.extend(['--type', mime_type])
+    subprocess.run(command, input=payload, check=True)
+else:
+    header('clear', 'true')
+    render()

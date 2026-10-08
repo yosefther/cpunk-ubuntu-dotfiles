@@ -1,0 +1,50 @@
+#!/usr/bin/python3
+"""Keep one pair of clipboard-history watchers per Hyprland session."""
+import fcntl
+import os
+from pathlib import Path
+import signal
+import subprocess
+import time
+
+os.umask(0o077)
+os.environ['PATH'] = str(Path.home() / '.local/bin') + ':' + os.environ['PATH']
+runtime = Path(os.environ['XDG_RUNTIME_DIR'])
+lock = (runtime / 'cpunk-clipboard-watch.lock').open('w')
+try:
+    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+except BlockingIOError:
+    raise SystemExit(0)
+lock.write(str(os.getpid())); lock.flush()
+socket = runtime / 'hypr' / os.environ['HYPRLAND_INSTANCE_SIGNATURE'] / '.socket.sock'
+children = []
+running = True
+
+
+def stop(*_):
+    global running
+    running = False
+
+
+signal.signal(signal.SIGTERM, stop)
+signal.signal(signal.SIGINT, stop)
+try:
+    while running and socket.exists():
+        if not children or any(p.poll() is not None for p in children):
+            for p in children:
+                if p.poll() is None:
+                    p.terminate()
+            for p in children:
+                p.wait(timeout=3)
+            children = [subprocess.Popen(['wl-paste', '--type', kind, '--watch', 'cpunk-cliphist', 'store'])
+                        for kind in ['text', 'image']]
+        time.sleep(1)
+finally:
+    for p in children:
+        if p.poll() is None:
+            p.terminate()
+    for p in children:
+        try:
+            p.wait(timeout=3)
+        except subprocess.TimeoutExpired:
+            p.kill()

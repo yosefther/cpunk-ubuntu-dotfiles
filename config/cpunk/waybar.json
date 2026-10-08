@@ -15,6 +15,7 @@
     "memory",
     "network",
     "pulseaudio",
+    "custom/clipboard",
     "tray",
     "custom/lock"
   ],
@@ -58,5 +59,10 @@
   "custom/lock": {
     "format": "LOCK",
     "on-click": "hyprlock -c @HOME@/.config/cpunk/hyprlock.conf"
+  },
+  "custom/clipboard": {
+    "format": "Clipboard",
+    "tooltip": "Clipboard history: Windows + Shift + V",
+    "on-click": "@HOME@/.local/bin/cpunk-clipboard"
   }
 }

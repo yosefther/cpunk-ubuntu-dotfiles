@@ -1,0 +1,6 @@
+#!/bin/sh
+umask 077
+if [ -x "$HOME/.local/share/cpunk/cliphist-package/extracted/usr/bin/cliphist" ]; then
+    exec "$HOME/.local/share/cpunk/cliphist-package/extracted/usr/bin/cliphist" -max-items 200 "$@"
+fi
+exec /usr/bin/cliphist -max-items 200 "$@"

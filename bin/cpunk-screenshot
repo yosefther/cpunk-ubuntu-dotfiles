@@ -1,5 +1,14 @@
 #!/bin/sh
 selection=$(slurp) || exit 0
 mkdir -p "$HOME/Pictures/Screenshots"
-image="$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png"
-grim -g "$selection" "$image" && notify-send "Screenshot saved" "$image"
+image=$(mktemp "$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S)-XXXXXX.png") || exit 1
+if ! grim -g "$selection" "$image"; then
+    rm -f "$image"
+    exit 1
+fi
+if wl-copy --type image/png < "$image"; then
+    notify-send "Screenshot copied and saved" "$image"
+else
+    notify-send "Screenshot saved" "Clipboard copy failed. Saved to $image"
+    exit 1
+fi

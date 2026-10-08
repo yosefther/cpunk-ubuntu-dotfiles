@@ -8,7 +8,7 @@ if os.environ.get('CPUNK_PREVIEW')!='1':
  subprocess.run(['systemctl','--user','restart','xdg-desktop-portal.service'],check=False)
 commands=[['elephant'],['walker','--gapplication-service'],['waybar','-c',str(cfg/'waybar.json'),'-s',str(cfg/'waybar.css')],['hyprpaper','-c',str(cfg/'hyprpaper.conf')]]
 if os.environ.get('CPUNK_PREVIEW')!='1':
- commands.extend([['mako','-c',str(cfg/'mako.conf')],['/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1'],['swayidle','-w','timeout','600','hyprlock -c '+str(cfg/'hyprlock.conf'),'before-sleep','hyprlock -c '+str(cfg/'hyprlock.conf')]])
+ commands.extend([['cpunk-clipboard-watch'],['mako','-c',str(cfg/'mako.conf')],['/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1'],['swayidle','-w','timeout','600','hyprlock -c '+str(cfg/'hyprlock.conf'),'before-sleep','hyprlock -c '+str(cfg/'hyprlock.conf')]])
 children=[]
 try:
  for cmd in commands:

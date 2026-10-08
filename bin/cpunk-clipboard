@@ -1,0 +1,3 @@
+#!/bin/sh
+export PATH="$HOME/.local/bin:$PATH"
+exec cpunk-rofi -show Clipboard -modes "Clipboard:$HOME/.local/bin/cpunk-clipboard-items" -show-icons -theme-str 'listview { columns: 1; lines: 8; } element { orientation: horizontal; padding: 12px; } element-icon { size: 36px; } element-text { horizontal-align: 0.0; } textbox-help { content: "Select to copy, then Ctrl+V to paste | Esc to close"; }'

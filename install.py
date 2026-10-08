@@ -18,7 +18,7 @@ PACKAGES = [
     'git', 'hyprland', 'waybar', 'wofi', 'rofi', 'kitty', 'hyprpaper', 'hyprlock',
     'mako-notifier', 'swayidle', 'xdg-desktop-portal-hyprland',
     'xdg-desktop-portal-gtk', 'fonts-jetbrains-mono', 'grim', 'slurp',
-    'wl-clipboard', 'policykit-1-gnome', 'libgtk4-layer-shell0',
+    'wl-clipboard', 'cliphist', 'python3-gi', 'gir1.2-gdkpixbuf-2.0', 'policykit-1-gnome', 'libgtk4-layer-shell0',
     'libpoppler-glib8t64', 'tmux', 'ptyxis', 'nautilus',
     'gnome-control-center', 'yaru-theme-gtk', 'yaru-theme-icon', 'libnotify-bin',
 ]
