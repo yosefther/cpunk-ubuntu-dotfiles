@@ -31,7 +31,7 @@ Use **Esc** to dismiss menus. The idle timer locks after ten minutes. Test locki
 
 This handbook is also available from Super + K or the CpUnk menu.
 
-Click **Apps** at the top-left of the panel, or press **Super + Space**. Click an application icon to open it, or type its name to search. Click **Windows** to find a running app and jump to its workspace. **System** contains settings and session controls. **Wallpapers** shows previews of the built-in and personal images. Use **Esc** to close the menu. Log out, restart, and shutdown require confirmation.
+Click **Apps** at the top-left of the panel, or press **Super + Space**. Switch tabs with **Ctrl + Left/Right** or **Ctrl + Tab/Shift + Ctrl + Tab**. Use the arrow keys to select an item and **Enter** to open it. Click **Windows** to find a running app and jump to its workspace. **System** contains settings and session controls. **Wallpapers** shows previews of the built-in and personal images. Use **Esc** to close the menu. Log out, restart, and shutdown require confirmation.
 
 ## Customize
 
