@@ -1,0 +1,8 @@
+# type(scope): imperative summary
+# Examples: feat(menu), fix(theme), docs(handbook), refactor(installer)
+# Prefer a specific title within 72 characters.
+
+# Explain the problem and resulting behavior when the title is insufficient.
+# Describe why this approach was chosen when that helps review.
+
+# Record relevant validation actually performed; omit unsupported claims.
