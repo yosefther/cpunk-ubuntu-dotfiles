@@ -1,0 +1,94 @@
+configuration {
+    show-icons: true;
+    icon-theme: "Yaru";
+    modi: "drun";
+    matching: "fuzzy";
+    case-sensitive: false;
+    sidebar-mode: true;
+    drun-use-desktop-cache: false;
+    click-to-exit: true;
+    font: "JetBrains Mono 12";
+}
+* {
+    background-color: #17191fff;
+    text-color: #f5f6faff;
+    border-color: #343a48ff;
+}
+window {
+    width: 980px;
+    height: 630px;
+    location: center;
+    anchor: center;
+    transparency: "real";
+    border: 2px;
+    border-color: #f82a2aff;
+    border-radius: 12px;
+}
+mainbox { children: [ inputbar, mode-switcher, message, listview, textbox-help ];
+    spacing: 12px;
+    padding: 22px;
+    }
+inputbar { children: [ prompt, entry ];
+    padding: 14px;
+    background-color: #23262fff;
+    border-radius: 8px;
+    spacing: 14px;
+    }
+prompt { background-color: inherit;
+    text-color: #ff6878ff;
+    }
+entry { background-color: inherit;
+    placeholder: "Search apps, or choose a tab below…";
+    placeholder-color: #b6bcc9ff;
+    }
+mode-switcher { spacing: 8px;
+    }
+button { padding: 12px;
+    background-color: #23262fff;
+    border-radius: 6px;
+    }
+button selected { background-color: #a32132ff;
+    text-color: #ffffffff;
+    }
+listview { columns: 4;
+    lines: 4;
+    fixed-height: true;
+    fixed-columns: true;
+    expand: true;
+    spacing: 10px;
+    scrollbar: true;
+    layout: vertical;
+    }
+element { orientation: vertical;
+    padding: 12px 8px;
+    spacing: 9px;
+    border-radius: 8px;
+    background-color: #20232bff;
+    }
+element selected.normal, element selected.active { background-color: #a32132ff;
+    text-color: #ffffffff;
+    }
+element-icon { size: 48px;
+    horizontal-align: 0.5;
+    background-color: inherit;
+    }
+element-text { horizontal-align: 0.5;
+    vertical-align: 0.5;
+    background-color: inherit;
+    text-color: inherit;
+    }
+scrollbar { width: 6px;
+    handle-color: #626a7cff;
+    }
+message { padding: 0px;
+    }
+textbox { background-color: inherit;
+    }
+textbox-help { str: "Click an icon to open • Type to search • Arrow keys + Enter • Esc to close";
+    text-color: #b6bcc9ff;
+    padding: 8px 0px 0px;
+    font: "JetBrains Mono 10";
+    }
+
+inputbar, mode-switcher, message, textbox-help { expand: false; }
+mainbox { expand: true; }

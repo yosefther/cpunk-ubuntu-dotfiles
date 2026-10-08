@@ -1,6 +1,7 @@
 #!/bin/sh
-export GSK_RENDERER=cairo
 export PATH="$HOME/.local/bin:$PATH"
-if ! walker --provider desktopapplications; then
-    exec wofi --show drun --style "$HOME/.config/cpunk/wofi.css" --width 640 --height 440 --prompt "CPUNK // Applications"
+if pgrep -u "$(id -u)" -x rofi >/dev/null; then
+    pkill -u "$(id -u)" -x rofi
+    exit 0
 fi
+exec cpunk-rofi -show drun -modes "drun,Windows:$HOME/.local/bin/cpunk-rofi-windows,System:$HOME/.local/bin/cpunk-rofi-system,Wallpapers:$HOME/.local/bin/cpunk-rofi-wallpapers" -display-drun Apps -display-Windows "Open windows" -show-icons -drun-display-format '{name}'

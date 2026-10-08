@@ -1,0 +1,102 @@
+#!/usr/bin/python3
+"""Rofi tabs for Hyprland windows, system controls, and local wallpapers."""
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+HOME = Path.home()
+MODE = sys.argv[1]
+SELECTED = os.environ.get('ROFI_RETV') == '1'
+INFO = os.environ.get('ROFI_INFO', '')
+os.environ['PATH'] = str(HOME / '.local/bin') + ':' + os.environ['PATH']
+
+
+def header(key, value):
+    print('\0' + key + '\x1f' + value)
+
+
+def row(label, icon, info, selectable=True):
+    label = label.replace('\n', ' ').replace('\0', '').replace('\x1f', ' ')
+    extra = 'icon\x1f' + icon + '\x1finfo\x1f' + info
+    if not selectable:
+        extra += '\x1fnonselectable\x1ftrue'
+    print(label + '\0' + extra)
+
+
+def spawn(command):
+    subprocess.Popen(command, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                     stderr=subprocess.DEVNULL, start_new_session=True)
+
+
+def wallpapers():
+    roots = [HOME / '.local/share/cpunk/source/backgrounds', HOME / '.local/share/cpunk/wallpapers']
+    return sorted([p for root in roots if root.is_dir() for p in root.iterdir()
+                   if p.is_file() and p.suffix.lower() in {'.png', '.jpg', '.jpeg', '.webp'}
+                   and not any(c in str(p) for c in '\n\0\x1f')], key=lambda p: p.name.casefold())
+
+
+COMMANDS = {
+    'settings': ('Settings', 'preferences-system', ['cpunk-settings']),
+    'network': ('Network settings', 'network-wired', ['cpunk-settings', 'network']),
+    'sound': ('Sound settings', 'audio-volume-high', ['cpunk-settings', 'sound']),
+    'files': ('Files', 'system-file-manager', ['nautilus']),
+    'terminal': ('Terminal', 'utilities-terminal', ['cpunk-terminal']),
+    'handbook': ('How to use CpUnk', 'help-browser', ['xdg-open', str(HOME / '.local/share/cpunk/handbook.html')]),
+    'lock': ('Lock screen', 'system-lock-screen', ['hyprlock', '-c', str(HOME / '.config/cpunk/hyprlock.conf')]),
+}
+POWER = {
+    'logout': ('Log out', 'system-log-out', ['hyprctl', 'dispatch', 'exit']),
+    'reboot': ('Restart computer', 'system-reboot', ['systemctl', 'reboot']),
+    'shutdown': ('Shut down computer', 'system-shutdown', ['systemctl', 'poweroff']),
+}
+
+
+def render():
+    header('no-custom', 'true')
+    if MODE == 'windows':
+        clients = json.loads(subprocess.check_output(['hyprctl', 'clients', '-j'], text=True))
+        header('message', 'Select a running app to jump to its window and workspace.')
+        for c in clients:
+            icon = c.get('class', '').lower()
+            label = f"{c.get('class', 'App')} · workspace {c['workspace']['name']} · {c.get('title', '')}"
+            row(label, icon or 'application-x-executable', c['address'])
+        if not clients:
+            row('No open windows', 'dialog-information', '', False)
+    elif MODE == 'wallpapers':
+        header('message', 'Choose a wallpaper. The choice is saved for your next login.')
+        for p in wallpapers():
+            row(p.stem.replace('-', ' '), str(p), str(p))
+    else:
+        header('message', 'Settings, files, terminal, help, and session controls.')
+        for key, (label, icon, _) in {**COMMANDS, **POWER}.items():
+            row(label, icon, key)
+
+
+if not SELECTED:
+    render()
+elif MODE == 'windows':
+    clients = json.loads(subprocess.check_output(['hyprctl', 'clients', '-j'], text=True))
+    if INFO in {c['address'] for c in clients}:
+        subprocess.run(['hyprctl', 'dispatch', 'focuswindow', 'address:' + INFO], check=True,
+                       stdout=subprocess.DEVNULL)
+elif MODE == 'wallpapers':
+    if INFO in {str(p) for p in wallpapers()}:
+        subprocess.run(['hyprctl', 'hyprpaper', 'wallpaper', ', ' + INFO + ', cover'],
+                       check=True, stdout=subprocess.DEVNULL)
+        (HOME / '.config/cpunk/hyprpaper.conf').write_text(
+            'splash = false\nwallpaper {\n monitor =\n path = ' + INFO + '\n fit_mode = cover\n}\n')
+elif INFO in COMMANDS:
+    spawn(COMMANDS[INFO][2])
+elif INFO in POWER:
+    header('clear', 'true')
+    header('no-custom', 'true')
+    header('message', 'Save your work first. Confirm: ' + POWER[INFO][0] + '?')
+    row('Cancel', 'dialog-cancel', 'cancel')
+    row('Confirm ' + POWER[INFO][0], POWER[INFO][1], 'confirm:' + INFO)
+elif INFO.startswith('confirm:') and INFO[8:] in POWER:
+    spawn(POWER[INFO[8:]][2])
+else:
+    header('clear', 'true')
+    render()

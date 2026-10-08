@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-import subprocess,os
+import subprocess,os,sys
 from pathlib import Path
 os.environ['GSK_RENDERER']='cairo'
 os.environ['PATH']=str(Path.home()/'.local/bin')+':'+os.environ['PATH']
 def choose(items,prompt):
  r=subprocess.run(['walker','--dmenu','--placeholder',prompt],input='\n'.join(items)+'\n',text=True,capture_output=True)
  return r.stdout.strip() if r.returncode==0 else ''
+if len(sys.argv)==1:
+ os.execv(str(Path.home()/'.local/bin/cpunk-launcher'),['cpunk-launcher'])
 a=choose(['Applications','Terminal','Files','Settings','Wallpaper','Handbook','Lock screen','Log out'],'CPUNK // Menu')
 cmds={'Applications':['cpunk-launcher'],'Terminal':['cpunk-terminal'],'Files':['nautilus'],'Settings':['cpunk-settings'],'Handbook':['xdg-open',str(Path.home()/'.local/share/cpunk/handbook.html')],'Lock screen':['hyprlock','-c',str(Path.home()/'.config/cpunk/hyprlock.conf')]}
 if a=='Wallpaper':

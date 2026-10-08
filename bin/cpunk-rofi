@@ -1,0 +1,10 @@
+#!/bin/sh
+export PATH="$HOME/.local/bin:$PATH"
+local_rofi="$HOME/.local/share/cpunk/rofi-package/extracted/usr"
+if [ -x "$local_rofi/bin/rofi" ]; then
+    export LD_LIBRARY_PATH="$local_rofi/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+    rofi_executable="$local_rofi/bin/rofi"
+else
+    rofi_executable=/usr/bin/rofi
+fi
+exec "$rofi_executable" -no-config -theme "$HOME/.config/cpunk/menu.rasi" -terminal "$HOME/.local/bin/cpunk-terminal" "$@"

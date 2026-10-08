@@ -15,7 +15,7 @@ from urllib.request import urlopen
 REPO = Path(__file__).resolve().parent
 MANIFEST = json.loads((REPO / 'upstream.json').read_text())
 PACKAGES = [
-    'git', 'hyprland', 'waybar', 'wofi', 'kitty', 'hyprpaper', 'hyprlock',
+    'git', 'hyprland', 'waybar', 'wofi', 'rofi', 'kitty', 'hyprpaper', 'hyprlock',
     'mako-notifier', 'swayidle', 'xdg-desktop-portal-hyprland',
     'xdg-desktop-portal-gtk', 'fonts-jetbrains-mono', 'grim', 'slurp',
     'wl-clipboard', 'policykit-1-gnome', 'libgtk4-layer-shell0',
@@ -87,6 +87,11 @@ def main():
             "Path.home()/'.local/share/cpunk/source/backgrounds'/w",
             "Path(" + repr(str(source)) + ")/'backgrounds'/w")
         writes['.local/bin/cpunk-menu'] = (data.encode(), mode)
+        data, mode = writes['.local/bin/cpunk-rofi-actions']
+        data = data.decode().replace(
+            "HOME / '.local/share/cpunk/source/backgrounds'",
+            "Path(" + repr(str(source)) + ") / 'backgrounds'")
+        writes['.local/bin/cpunk-rofi-actions'] = (data.encode(), mode)
     writes['.local/share/cpunk/handbook.html'] = ((REPO / 'docs/handbook.html').read_bytes(), 0o644)
     writes['.local/share/cpunk/HANDBOOK.md'] = ((REPO / 'docs/HANDBOOK.md').read_bytes(), 0o644)
     writes['.local/share/cpunk/cpunk.desktop'] = (

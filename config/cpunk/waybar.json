@@ -19,9 +19,9 @@
     "custom/lock"
   ],
   "custom/menu": {
-    "format": "CPUNK",
-    "tooltip": "Menu: Super + Alt + Space",
-    "on-click": "@HOME@/.local/bin/cpunk-menu"
+    "format": "\u25a6 Apps",
+    "tooltip": "Open applications and system controls (Windows + Space)",
+    "on-click": "@HOME@/.local/bin/cpunk-launcher"
   },
   "clock": {
     "format": "{:%A %I:%M %p}",

@@ -8,8 +8,8 @@ Ubuntu / Hyprland. Super means the Windows-logo key.
 
 | Shortcut | Action |
 |---|---|
-| Super + Space | Application launcher; type a name, use arrows, press Enter |
-| Super + Alt + Space | CpUnk menu: applications, settings, wallpaper, lock, logout |
+| Super + Space | Apps menu: icon grid, search, Windows, System, and Wallpapers tabs |
+| Super + Alt + Space | Open the same Apps menu |
 | Ctrl + Alt + T / Super + Enter | Kitty terminal, attached to the main tmux session |
 | Super + E / Super + B | Files / Brave browser |
 | Super + arrow | Focus another window |
@@ -31,12 +31,14 @@ Use **Esc** to dismiss menus. The idle timer locks after ten minutes. Test locki
 
 This handbook is also available from Super + K or the CpUnk menu.
 
+Click **Apps** at the top-left of the panel, or press **Super + Space**. Click an application icon to open it, or type its name to search. Click **Windows** to find a running app and jump to its workspace. **System** contains settings and session controls. **Wallpapers** shows previews of the built-in and personal images. Use **Esc** to close the menu. Log out, restart, and shutdown require confirmation.
+
 ## Customize
 
-Menus use opaque charcoal surfaces, white text, and red selection highlights. Settings uses an opaque dark GTK theme; the app launcher includes a Settings entry that works in Hyprland. Network and sound panel buttons use the same settings wrapper. GTK styling is saved in `~/.config/gtk-3.0/gtk.css` and `~/.config/gtk-4.0/gtk.css`.
+The Rofi menu uses opaque charcoal surfaces, visible application icons, white text, and red selection highlights. Settings uses an opaque dark GTK theme; the System tab includes Settings, Network, Sound, Files, Terminal, Help, and session controls. Network and sound panel buttons use the same settings wrapper. GTK styling is saved in `~/.config/gtk-3.0/gtk.css` and `~/.config/gtk-4.0/gtk.css`.
 
 
-- **Wallpaper:** CpUnk menu → Wallpaper. Choices are the upstream `Arcyx.png`, `Bxry2.png`, `Cryox3.png`, and `Draxo.png` images. The selection is saved in `~/.config/cpunk/hyprpaper.conf`. Add your own PNG, JPG, JPEG, or WebP images to `~/.local/share/cpunk/wallpapers/`; they appear automatically in this menu. Personal images stay local and are not included in this repository.
+- **Wallpaper:** Apps menu → Wallpapers. Choices are the upstream `Arcyx.png`, `Bxry2.png`, `Cryox3.png`, and `Draxo.png` images. The selection is saved in `~/.config/cpunk/hyprpaper.conf`. Add your own PNG, JPG, JPEG, or WebP images to `~/.local/share/cpunk/wallpapers/`; they appear automatically in this menu. Personal images stay local and are not included in this repository.
 - **Keyboard:** edit `input.kb_layout` in `~/.config/cpunk/hyprland.conf`. The snapshot uses `us`.
 - **Monitor:** the default is preferred resolution, automatic placement, scale 1. Adjust `monitor` for your displays.
 - **Browser:** Super+B expects an existing `brave-browser` installation. Edit this binding to `firefox` or another browser if necessary; Brave is not installed by this script.
