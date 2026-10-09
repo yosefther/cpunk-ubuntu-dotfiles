@@ -14,85 +14,158 @@ configuration {
     kb-mode-previous: "Control+Left,Control+ISO_Left_Tab";
 }
 * {
-    background-color: #17191fff;
-    text-color: #f5f6faff;
-    border-color: #343a48ff;
+    background-color: #0b0d12ff;
+    text-color: #eef2f7ff;
+    border-color: #303746ff;
+    accent-color: #f43f5eff;
+    accent-soft: #9f1239ff;
+    muted-color: #929badff;
 }
+
 window {
-    width: 980px;
-    height: 630px;
+    width: 860px;
+    height: 570px;
     location: center;
     anchor: center;
     transparency: "real";
-    border: 2px;
-    border-color: #f82a2aff;
-    border-radius: 12px;
+    background-color: #0b0d12ff;
+    border: 1px;
+    border-color: #4a5264ff;
+    border-radius: 16px;
 }
-mainbox { children: [ inputbar, mode-switcher, message, listview, textbox-help ];
+
+mainbox {
+    children: [ inputbar, mode-switcher, message, listview, textbox-help ];
     spacing: 12px;
-    padding: 22px;
-    }
-inputbar { children: [ prompt, entry ];
-    padding: 14px;
-    background-color: #23262fff;
-    border-radius: 8px;
+    padding: 18px;
+    background-color: #0b0d12ff;
+    expand: true;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    padding: 13px 16px;
     spacing: 14px;
-    }
-prompt { background-color: inherit;
-    text-color: #ff6878ff;
-    }
-entry { background-color: inherit;
-    placeholder: "Search apps, or choose a tab below…";
-    placeholder-color: #b6bcc9ff;
-    }
-mode-switcher { spacing: 8px;
-    }
-button { padding: 12px;
-    background-color: #23262fff;
-    border-radius: 6px;
-    }
-button selected { background-color: #a32132ff;
+    background-color: #171b24ff;
+    border: 1px;
+    border-color: #303746ff;
+    border-radius: 10px;
+    expand: false;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @accent-color;
+    font: "JetBrains Mono Bold 12";
+}
+
+entry {
+    background-color: transparent;
     text-color: #ffffffff;
-    }
-listview { columns: 4;
+    placeholder: "Type to search applications…";
+    placeholder-color: @muted-color;
+}
+
+mode-switcher {
+    spacing: 7px;
+    background-color: transparent;
+    expand: false;
+}
+
+button {
+    padding: 10px 12px;
+    background-color: #141821ff;
+    text-color: #bdc5d3ff;
+    border: 1px;
+    border-color: #252b38ff;
+    border-radius: 8px;
+}
+
+button selected {
+    background-color: @accent-soft;
+    text-color: #ffffffff;
+    border-color: @accent-color;
+}
+
+message {
+    padding: 0px;
+    background-color: transparent;
+    expand: false;
+}
+
+message textbox {
+    padding: 8px 10px;
+    background-color: #11151cff;
+    text-color: @muted-color;
+    border-radius: 7px;
+}
+
+listview {
+    columns: 3;
     lines: 4;
     fixed-height: true;
     fixed-columns: true;
+    dynamic: false;
     expand: true;
-    spacing: 10px;
+    spacing: 8px;
     scrollbar: true;
     layout: vertical;
-    }
-element { orientation: vertical;
-    padding: 12px 8px;
-    spacing: 9px;
-    border-radius: 8px;
-    background-color: #20232bff;
-    }
-element selected.normal, element selected.active { background-color: #a32132ff;
-    text-color: #ffffffff;
-    }
-element-icon { size: 48px;
-    horizontal-align: 0.5;
-    background-color: inherit;
-    }
-element-text { horizontal-align: 0.5;
-    vertical-align: 0.5;
-    background-color: inherit;
-    text-color: inherit;
-    }
-scrollbar { width: 6px;
-    handle-color: #626a7cff;
-    }
-message { padding: 0px;
-    }
-textbox { background-color: inherit;
-    }
-textbox-help { str: "Ctrl+Left/Right: switch tabs • Arrows: choose • Enter: open • Esc: close";
-    text-color: #b6bcc9ff;
-    padding: 8px 0px 0px;
-    font: "JetBrains Mono 10";
-    }
+    background-color: transparent;
+}
 
-inputbar, mode-switcher, message, textbox-help { expand: false; }
-mainbox { expand: true; }
+element {
+    orientation: horizontal;
+    padding: 12px 14px;
+    spacing: 12px;
+    background-color: #141821ff;
+    text-color: #dce2ebff;
+    border: 1px;
+    border-color: #222936ff;
+    border-radius: 9px;
+}
+
+element alternate.normal {
+    background-color: #11151dff;
+}
+
+element selected.normal,
+element selected.active,
+element selected.urgent {
+    background-color: @accent-soft;
+    text-color: #ffffffff;
+    border-color: @accent-color;
+}
+
+element-icon {
+    size: 42px;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    background-color: transparent;
+}
+
+element-text {
+    horizontal-align: 0.0;
+    vertical-align: 0.5;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+scrollbar {
+    width: 5px;
+    handle-color: #566074ff;
+    background-color: #151922ff;
+    border-radius: 5px;
+}
+
+textbox {
+    background-color: transparent;
+}
+
+textbox-help {
+    str: "Ctrl+Left/Right  tabs   •   Arrows  select   •   Enter  open   •   Esc  close";
+    padding: 7px 2px 0px;
+    background-color: transparent;
+    text-color: #707a8dff;
+    font: "JetBrains Mono 9";
+    expand: false;
+}

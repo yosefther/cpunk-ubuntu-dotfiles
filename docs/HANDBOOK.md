@@ -38,7 +38,7 @@ Clipboard history starts with the CpUnk session and keeps up to 200 copied text 
 
 ## Customize
 
-The Rofi menu uses opaque charcoal surfaces, visible application icons, white text, and red selection highlights. Settings uses an opaque dark GTK theme; the System tab includes Settings, Network, Sound, Files, Terminal, Help, and session controls. Network and sound panel buttons use the same settings wrapper. GTK styling is saved in `~/.config/gtk-3.0/gtk.css` and `~/.config/gtk-4.0/gtk.css`.
+The Rofi menu uses a compact three-column card layout with graphite surfaces, visible application icons, and signal-red selection. Settings uses the same near-black GTK palette with red navigation and control accents. The System tab includes Settings, Network, Sound, Files, Terminal, Help, and session controls. Network and sound panel buttons use the same settings wrapper. GTK styling is saved in `~/.config/gtk-3.0/gtk.css` and `~/.config/gtk-4.0/gtk.css`.
 
 
 - **Wallpaper:** Apps menu → Wallpapers. Choices are the upstream `Arcyx.png`, `Bxry2.png`, `Cryox3.png`, and `Draxo.png` images. The selection is saved in `~/.config/cpunk/hyprpaper.conf`. Add your own PNG, JPG, JPEG, or WebP images to `~/.local/share/cpunk/wallpapers/`; they appear automatically in this menu. Personal images stay local and are not included in this repository.
