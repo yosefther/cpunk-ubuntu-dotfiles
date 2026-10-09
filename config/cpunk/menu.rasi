@@ -43,7 +43,7 @@ mainbox {
 }
 
 inputbar {
-    children: [ textbox-search, entry ];
+    children: [ icon-search, entry ];
     padding: 11px 14px;
     spacing: 10px;
     background-color: #181c25f0;
@@ -53,12 +53,11 @@ inputbar {
     expand: false;
 }
 
-textbox-search {
-    str: "⌕";
-    padding: 0px 0px 5px 0px;
+icon-search {
+    filename: "@HOME@/.config/cpunk/icons/search.svg";
+    size: 20px;
     background-color: transparent;
-    text-color: #f43f5eff;
-    font: "Cantarell Bold 20";
+    horizontal-align: 0.5;
     vertical-align: 0.5;
     expand: false;
 }
@@ -70,6 +69,7 @@ entry {
     placeholder-color: @muted-color;
     font: "Cantarell 12";
     horizontal-align: 0.0;
+    vertical-align: 0.5;
     expand: true;
 }
 
