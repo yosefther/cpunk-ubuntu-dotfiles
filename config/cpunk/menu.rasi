@@ -55,6 +55,7 @@ inputbar {
 
 textbox-search {
     str: "⌕";
+    padding: 0px 0px 5px 0px;
     background-color: transparent;
     text-color: #f43f5eff;
     font: "Cantarell Bold 20";
