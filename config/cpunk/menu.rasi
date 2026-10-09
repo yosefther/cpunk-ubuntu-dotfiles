@@ -7,84 +7,88 @@ configuration {
     sidebar-mode: true;
     drun-use-desktop-cache: false;
     click-to-exit: true;
-    font: "JetBrains Mono 12";
+    font: "Cantarell 12";
     kb-move-word-back: "Alt+b";
     kb-move-word-forward: "Alt+f";
     kb-mode-next: "Control+Right,Control+Tab";
     kb-mode-previous: "Control+Left,Control+ISO_Left_Tab";
 }
 * {
-    background-color: #0b0d12ff;
+    background-color: #0b0d12ed;
     text-color: #eef2f7ff;
-    border-color: #303746ff;
-    accent-color: #f43f5eff;
-    accent-soft: #9f1239ff;
+    border-color: #3a4252ff;
+    selected-color: #9f1239f2;
+    selected-border: #f43f5eff;
     muted-color: #929badff;
 }
 
 window {
-    width: 680px;
-    height: 560px;
+    width: 700px;
+    height: 540px;
     location: center;
     anchor: center;
     transparency: "real";
-    background-color: #0b0d12ff;
+    background-color: #0b0d12ed;
     border: 1px;
-    border-color: #3a4252ff;
-    border-radius: 18px;
+    border-color: #3a4252e6;
+    border-radius: 20px;
 }
 
 mainbox {
     children: [ inputbar, mode-switcher, message, listview, textbox-help ];
     spacing: 10px;
-    padding: 16px;
-    background-color: #0b0d12ff;
+    padding: 14px;
+    background-color: transparent;
     expand: true;
 }
 
 inputbar {
-    children: [ prompt, entry ];
-    padding: 16px 18px;
-    spacing: 14px;
-    background-color: #181c25ff;
+    children: [ textbox-search, entry ];
+    padding: 15px 17px;
+    spacing: 12px;
+    background-color: #181c25e8;
     border: 1px;
-    border-color: #303746ff;
+    border-color: #3a4252e6;
     border-radius: 12px;
     expand: false;
 }
 
-prompt {
+textbox-search {
+    str: "⌕";
     background-color: transparent;
-    text-color: @accent-color;
-    font: "JetBrains Mono Bold 12";
+    text-color: #f43f5eff;
+    font: "Cantarell Bold 18";
 }
 
 entry {
     background-color: transparent;
     text-color: #ffffffff;
-    placeholder: "Type to search applications…";
+    placeholder: "Search apps, files, and commands";
     placeholder-color: @muted-color;
+    font: "Cantarell 13";
 }
 
 mode-switcher {
-    spacing: 2px;
+    spacing: 5px;
+    padding: 0px 3px;
     background-color: transparent;
     expand: false;
 }
 
 button {
-    padding: 9px 10px;
+    padding: 7px 10px;
     background-color: transparent;
-    text-color: #929badff;
-    border: 0px 0px 2px 0px;
+    text-color: @muted-color;
+    border: 1px;
     border-color: transparent;
-    border-radius: 0px;
+    border-radius: 7px;
+    font: "Cantarell 11";
 }
 
 button selected {
-    background-color: transparent;
+    background-color: #3a1720e8;
     text-color: #ffffffff;
-    border-color: #f43f5eff;
+    border-color: #f43f5ecc;
 }
 
 message {
@@ -102,12 +106,12 @@ message textbox {
 
 listview {
     columns: 1;
-    lines: 7;
+    lines: 6;
     fixed-height: true;
     fixed-columns: true;
     dynamic: false;
     expand: true;
-    spacing: 0px;
+    spacing: 3px;
     scrollbar: true;
     layout: vertical;
     background-color: transparent;
@@ -115,13 +119,13 @@ listview {
 
 element {
     orientation: horizontal;
-    padding: 10px 12px;
-    spacing: 13px;
+    padding: 10px 13px;
+    spacing: 14px;
     background-color: transparent;
-    text-color: #dce2ebff;
-    border: 0px 0px 1px 0px;
-    border-color: #202632ff;
-    border-radius: 0px;
+    text-color: #eef2f7ff;
+    border: 1px;
+    border-color: transparent;
+    border-radius: 9px;
 }
 
 element alternate.normal {
@@ -131,14 +135,14 @@ element alternate.normal {
 element selected.normal,
 element selected.active,
 element selected.urgent {
-    background-color: @accent-soft;
+    background-color: @selected-color;
     text-color: #ffffffff;
-    border-color: @accent-soft;
-    border-radius: 8px;
+    border-color: @selected-border;
+    border-radius: 9px;
 }
 
 element-icon {
-    size: 32px;
+    size: 38px;
     horizontal-align: 0.5;
     vertical-align: 0.5;
     background-color: transparent;
@@ -149,12 +153,13 @@ element-text {
     vertical-align: 0.5;
     background-color: transparent;
     text-color: inherit;
+    font: "Cantarell 13";
 }
 
 scrollbar {
     width: 5px;
     handle-color: #566074ff;
-    background-color: #151922ff;
+    background-color: #151922cc;
     border-radius: 5px;
 }
 
@@ -163,10 +168,12 @@ textbox {
 }
 
 textbox-help {
-    str: "Ctrl+Left/Right  tabs   •   Arrows  select   •   Enter  open   •   Esc  close";
-    padding: 6px 4px 0px;
+    str: "↑  ↓  Navigate     Enter  Open     Esc  Close     Ctrl+←/→  Tabs";
+    padding: 11px 4px 2px;
     background-color: transparent;
-    text-color: #707a8dff;
-    font: "JetBrains Mono 9";
+    text-color: @muted-color;
+    border: 1px 0px 0px 0px;
+    border-color: #303746cc;
+    font: "Cantarell 10";
     expand: false;
 }
