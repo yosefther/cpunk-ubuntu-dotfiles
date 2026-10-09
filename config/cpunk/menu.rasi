@@ -57,7 +57,8 @@ textbox-search {
     str: "⌕";
     background-color: transparent;
     text-color: #f43f5eff;
-    font: "Cantarell Bold 14";
+    font: "Cantarell Bold 20";
+    vertical-align: 0.5;
     expand: false;
 }
 
