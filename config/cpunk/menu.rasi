@@ -14,42 +14,42 @@ configuration {
     kb-mode-previous: "Control+Left,Control+ISO_Left_Tab";
 }
 * {
-    background-color: #0b0d12ed;
+    background-color: #0b0d12f5;
     text-color: #eef2f7ff;
     border-color: #3a4252ff;
-    selected-color: #9f1239f2;
-    selected-border: #f43f5eff;
+    selected-color: #72152fe8;
+    selected-border: #d92f50e6;
     muted-color: #929badff;
 }
 
 window {
-    width: 700px;
-    height: 540px;
+    width: 660px;
+    height: 480px;
     location: center;
     anchor: center;
     transparency: "real";
-    background-color: #0b0d12ed;
+    background-color: #0b0d12f5;
     border: 1px;
     border-color: #3a4252e6;
-    border-radius: 20px;
+    border-radius: 16px;
 }
 
 mainbox {
     children: [ inputbar, mode-switcher, message, listview, textbox-help ];
-    spacing: 10px;
-    padding: 14px;
+    spacing: 8px;
+    padding: 13px;
     background-color: transparent;
     expand: true;
 }
 
 inputbar {
     children: [ textbox-search, entry ];
-    padding: 15px 17px;
-    spacing: 12px;
-    background-color: #181c25e8;
+    padding: 11px 14px;
+    spacing: 10px;
+    background-color: #181c25f0;
     border: 1px;
     border-color: #3a4252e6;
-    border-radius: 12px;
+    border-radius: 10px;
     expand: false;
 }
 
@@ -57,7 +57,8 @@ textbox-search {
     str: "⌕";
     background-color: transparent;
     text-color: #f43f5eff;
-    font: "Cantarell Bold 18";
+    font: "Cantarell Bold 14";
+    expand: false;
 }
 
 entry {
@@ -65,30 +66,32 @@ entry {
     text-color: #ffffffff;
     placeholder: "Search apps, files, and commands";
     placeholder-color: @muted-color;
-    font: "Cantarell 13";
+    font: "Cantarell 12";
+    horizontal-align: 0.0;
+    expand: true;
 }
 
 mode-switcher {
-    spacing: 5px;
-    padding: 0px 3px;
+    spacing: 4px;
+    padding: 0px 2px;
     background-color: transparent;
     expand: false;
 }
 
 button {
-    padding: 7px 10px;
+    padding: 5px 8px;
     background-color: transparent;
     text-color: @muted-color;
     border: 1px;
     border-color: transparent;
-    border-radius: 7px;
-    font: "Cantarell 11";
+    border-radius: 6px;
+    font: "Cantarell 10";
 }
 
 button selected {
-    background-color: #3a1720e8;
+    background-color: #31151de8;
     text-color: #ffffffff;
-    border-color: #f43f5ecc;
+    border-color: #d92f50b8;
 }
 
 message {
@@ -111,7 +114,7 @@ listview {
     fixed-columns: true;
     dynamic: false;
     expand: true;
-    spacing: 3px;
+    spacing: 2px;
     scrollbar: true;
     layout: vertical;
     background-color: transparent;
@@ -119,13 +122,13 @@ listview {
 
 element {
     orientation: horizontal;
-    padding: 10px 13px;
-    spacing: 14px;
+    padding: 7px 11px;
+    spacing: 11px;
     background-color: transparent;
     text-color: #eef2f7ff;
     border: 1px;
     border-color: transparent;
-    border-radius: 9px;
+    border-radius: 7px;
 }
 
 element alternate.normal {
@@ -138,11 +141,11 @@ element selected.urgent {
     background-color: @selected-color;
     text-color: #ffffffff;
     border-color: @selected-border;
-    border-radius: 9px;
+    border-radius: 7px;
 }
 
 element-icon {
-    size: 38px;
+    size: 30px;
     horizontal-align: 0.5;
     vertical-align: 0.5;
     background-color: transparent;
@@ -153,14 +156,14 @@ element-text {
     vertical-align: 0.5;
     background-color: transparent;
     text-color: inherit;
-    font: "Cantarell 13";
+    font: "Cantarell 12";
 }
 
 scrollbar {
-    width: 5px;
+    width: 3px;
     handle-color: #566074ff;
     background-color: #151922cc;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 textbox {
@@ -169,11 +172,11 @@ textbox {
 
 textbox-help {
     str: "↑  ↓  Navigate     Enter  Open     Esc  Close     Ctrl+←/→  Tabs";
-    padding: 11px 4px 2px;
+    padding: 8px 3px 1px;
     background-color: transparent;
     text-color: @muted-color;
     border: 1px 0px 0px 0px;
     border-color: #303746cc;
-    font: "Cantarell 10";
+    font: "Cantarell 9";
     expand: false;
 }
