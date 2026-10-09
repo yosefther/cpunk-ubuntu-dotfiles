@@ -23,33 +23,33 @@ configuration {
 }
 
 window {
-    width: 860px;
-    height: 570px;
+    width: 680px;
+    height: 560px;
     location: center;
     anchor: center;
     transparency: "real";
     background-color: #0b0d12ff;
     border: 1px;
-    border-color: #4a5264ff;
-    border-radius: 16px;
+    border-color: #3a4252ff;
+    border-radius: 18px;
 }
 
 mainbox {
     children: [ inputbar, mode-switcher, message, listview, textbox-help ];
-    spacing: 12px;
-    padding: 18px;
+    spacing: 10px;
+    padding: 16px;
     background-color: #0b0d12ff;
     expand: true;
 }
 
 inputbar {
     children: [ prompt, entry ];
-    padding: 13px 16px;
+    padding: 16px 18px;
     spacing: 14px;
-    background-color: #171b24ff;
+    background-color: #181c25ff;
     border: 1px;
     border-color: #303746ff;
-    border-radius: 10px;
+    border-radius: 12px;
     expand: false;
 }
 
@@ -67,24 +67,24 @@ entry {
 }
 
 mode-switcher {
-    spacing: 7px;
+    spacing: 2px;
     background-color: transparent;
     expand: false;
 }
 
 button {
-    padding: 10px 12px;
-    background-color: #141821ff;
-    text-color: #bdc5d3ff;
-    border: 1px;
-    border-color: #252b38ff;
-    border-radius: 8px;
+    padding: 9px 10px;
+    background-color: transparent;
+    text-color: #929badff;
+    border: 0px 0px 2px 0px;
+    border-color: transparent;
+    border-radius: 0px;
 }
 
 button selected {
-    background-color: @accent-soft;
+    background-color: transparent;
     text-color: #ffffffff;
-    border-color: @accent-color;
+    border-color: #f43f5eff;
 }
 
 message {
@@ -101,13 +101,13 @@ message textbox {
 }
 
 listview {
-    columns: 3;
-    lines: 4;
+    columns: 1;
+    lines: 7;
     fixed-height: true;
     fixed-columns: true;
     dynamic: false;
     expand: true;
-    spacing: 8px;
+    spacing: 0px;
     scrollbar: true;
     layout: vertical;
     background-color: transparent;
@@ -115,17 +115,17 @@ listview {
 
 element {
     orientation: horizontal;
-    padding: 12px 14px;
-    spacing: 12px;
-    background-color: #141821ff;
+    padding: 10px 12px;
+    spacing: 13px;
+    background-color: transparent;
     text-color: #dce2ebff;
-    border: 1px;
-    border-color: #222936ff;
-    border-radius: 9px;
+    border: 0px 0px 1px 0px;
+    border-color: #202632ff;
+    border-radius: 0px;
 }
 
 element alternate.normal {
-    background-color: #11151dff;
+    background-color: transparent;
 }
 
 element selected.normal,
@@ -133,11 +133,12 @@ element selected.active,
 element selected.urgent {
     background-color: @accent-soft;
     text-color: #ffffffff;
-    border-color: @accent-color;
+    border-color: @accent-soft;
+    border-radius: 8px;
 }
 
 element-icon {
-    size: 42px;
+    size: 32px;
     horizontal-align: 0.5;
     vertical-align: 0.5;
     background-color: transparent;
@@ -163,7 +164,7 @@ textbox {
 
 textbox-help {
     str: "Ctrl+Left/Right  tabs   •   Arrows  select   •   Enter  open   •   Esc  close";
-    padding: 7px 2px 0px;
+    padding: 6px 4px 0px;
     background-color: transparent;
     text-color: #707a8dff;
     font: "JetBrains Mono 9";
