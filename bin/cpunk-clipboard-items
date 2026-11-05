@@ -89,7 +89,15 @@ def render():
 
 
 info = os.environ.get('ROFI_INFO', '')
-if os.environ.get('ROFI_RETV') != '1':
+retv = os.environ.get('ROFI_RETV')
+if retv == '3':
+    # Shift+Delete (rofi's kb-delete-entry) removes a single history item.
+    if info.isdigit():
+        subprocess.run(['cpunk-cliphist', 'delete'], input=info.encode(),
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        (CACHE / (info + '.png')).unlink(missing_ok=True)
+    render()
+elif retv != '1':
     render()
 elif info == 'clear':
     header('clear', 'true')
