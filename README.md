@@ -64,7 +64,7 @@ The full [handbook](docs/HANDBOOK.md) is included, along with a browser-readable
 
 Click **Apps** at the top-left of the panel, or press **Super + Space**. Switch tabs with **Ctrl + Left/Right** or **Ctrl + Tab/Shift + Ctrl + Tab**. Use the arrow keys to select an item and **Enter** to open it. Click **Windows** to find a running app and jump to its workspace. **System** contains settings and session controls. **Wallpapers** shows previews of the built-in and personal images. Use **Esc** to close the menu. Log out, restart, and shutdown require confirmation.
 
-Clipboard history starts with the CpUnk session and keeps up to 200 copied text or image items locally. Open it with **Super + Shift + V**, the panel's **Clipboard** button, or **Apps → System → Clipboard history**. Selecting an item copies it again; use **Ctrl + V** to paste. Choose **Clear clipboard history** in that menu to erase the saved history.
+Clipboard history starts with the CpUnk session and keeps up to 15 copied text or image items locally. Open it with **Super + Shift + V**, the panel's **Clipboard** button, or **Apps → System → Clipboard history**. Selecting an item copies it again; use **Ctrl + V** to paste. Choose **Clear clipboard history** in that menu to erase the saved history.
 
 ## Customize
 

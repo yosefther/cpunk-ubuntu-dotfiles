@@ -28,7 +28,8 @@ def row(label, info, icon='edit-paste', selectable=True):
 
 
 def listing():
-    p = subprocess.run(['cpunk-cliphist', 'list'], capture_output=True, text=True)
+    # cliphist truncates previews mid-character; don't crash on invalid UTF-8
+    p = subprocess.run(['cpunk-cliphist', 'list'], capture_output=True, text=True, errors='replace')
     if p.returncode:
         return []
     return [line.split('\t', 1) for line in p.stdout.splitlines() if '\t' in line]
