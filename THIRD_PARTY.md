@@ -1,6 +1,8 @@
 # Third-party components
 
-This repository stores the original Ubuntu integration scripts, configuration, handbook, and small theme adaptations. It does not bundle the original CpUnk wallpapers or theme styles, Walker/Elephant binaries, provider libraries, screenshots, caches, or logs.
+This repository stores the original Ubuntu integration scripts, configuration, handbook, and small theme adaptations. It does not bundle the original CpUnk wallpapers or theme styles, Walker/Elephant binaries, provider libraries, caches, or logs.
+
+The README showcase images in `docs/media/` were recorded in an isolated demo session using original wallpapers made for this repository. They contain no upstream CpUnk artwork.
 
 The installer retrieves CpUnk from https://github.com/stannorbvb-cmd/cpunk at the exact commit recorded in `upstream.json`. Its upstream tree does not declare a license at that revision. This repository does not apply its own license to those upstream assets or claim authorship of them; consult the upstream author regarding their use or redistribution.
 
