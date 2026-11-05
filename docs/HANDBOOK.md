@@ -34,7 +34,23 @@ This handbook is also available from Super + K or the CpUnk menu.
 
 Click **Apps** at the top-left of the panel, or press **Super + Space**. Switch tabs with **Ctrl + Left/Right** or **Ctrl + Tab/Shift + Ctrl + Tab**. Use the arrow keys to select an item and **Enter** to open it. Click **Windows** to find a running app and jump to its workspace. **System** contains settings and session controls. **Wallpapers** shows previews of the built-in and personal images. Use **Esc** to close the menu. Log out, restart, and shutdown require confirmation.
 
-Clipboard history starts with the CpUnk session and keeps up to 200 copied text or image items locally. Open it with **Super + Shift + V**, the panel's **Clipboard** button, or **Apps → System → Clipboard history**. Selecting an item copies it again; use **Ctrl + V** to paste. Choose **Clear clipboard history** in that menu to erase the saved history.
+Clipboard history starts with the CpUnk session and keeps the 15 most recent copied text or image items locally. Open it with **Super + Shift + V**, the panel's **Clipboard** button, or **Apps → System → Clipboard history**. Selecting an item copies it again; use **Ctrl + V** to paste (**Ctrl + Shift + V** in the terminal). Highlight an item and press **Shift + Delete** to remove just that item, or choose **Clear clipboard history** to erase everything.
+
+## Walkthrough
+
+A first session, step by step.
+
+1. **Log in.** At the login screen, open the gear/session selector, choose **CpUnk (Hyprland)**, and sign in. The black panel appears at the top: **Apps** on the left, workspaces in the middle, system stats and **Clipboard** / **LOCK** buttons on the right.
+2. **Open a terminal.** Press **Super + Enter** (or **Ctrl + Alt + T**). Kitty opens inside the `main` tmux session. Every terminal joins that same session, so a second terminal mirrors the first; press **Ctrl + B**, then **C** for a new tmux window, or **Ctrl + B**, then **D** to detach.
+3. **Launch an app.** Press **Super + Space**, type a few letters, and press **Enter**. **Ctrl + Left/Right** switches between the **Apps**, **Windows**, **System**, and **Wallpapers** tabs. **Esc** closes the menu.
+4. **Arrange windows.** Open a second app; it tiles next to the first automatically. **Super + arrow** moves focus, **Super + Shift + arrow** moves the window, and **Super + Ctrl + arrow** resizes it. **Super + V** floats a window, **Super + F** makes it fullscreen, and **Super + Q** closes it.
+5. **Use workspaces.** **Super + 2** jumps to workspace 2; apps on workspace 1 keep running. **Super + Shift + 2** sends the focused window there and follows it. You can also click the numbers in the panel.
+6. **Copy, paste, and reuse.** Copy text as usual, then press **Super + Shift + V** to see the last 15 items. **Enter** copies an item again, **Ctrl + V** pastes it, and **Shift + Delete** removes the highlighted item.
+7. **Take a screenshot.** Press **Print Screen** and drag over an area. The image is copied to the clipboard and saved under `~/Pictures/Screenshots`.
+8. **Change the wallpaper.** Open **Super + Space**, go to the **Wallpapers** tab, and press **Enter** on a preview. Drop your own images into `~/.local/share/cpunk/wallpapers/` and they appear in the list.
+9. **Lock or leave.** **Super + L** locks the screen. **Super + Shift + E** opens the menu; its **System** tab has log out, restart, and shutdown, each with a confirmation.
+
+Press **Super + K** at any time to reopen this handbook.
 
 ## Customize
 
