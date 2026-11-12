@@ -40,3 +40,41 @@ selection,
     background-color: #b4233c;
     color: #ffffff;
 }
+
+/* The portal file picker has its own view, sidebar, and column headers.
+   Give each an explicit dark surface so labels never disappear on white. */
+filechooser,
+filechooser .view,
+filechooser treeview,
+filechooser placessidebar,
+filechooser stack,
+filechooser scrolledwindow {
+    background-color: #11151d;
+    color: #eef2f7;
+}
+
+filechooser headerbar,
+filechooser .titlebar,
+filechooser treeview header button,
+filechooser columnview header button {
+    background-color: #1a1f29;
+    color: #eef2f7;
+    border-color: #343c4c;
+}
+
+filechooser row:hover,
+filechooser treeview.view:hover {
+    background-color: #252b38;
+    color: #ffffff;
+}
+
+filechooser row:selected,
+filechooser treeview.view:selected {
+    background-color: #8f1d32;
+    color: #ffffff;
+}
+
+filechooser label:disabled,
+filechooser button:disabled {
+    color: #929bad;
+}

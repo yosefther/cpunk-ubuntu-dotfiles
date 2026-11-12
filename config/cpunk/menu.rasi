@@ -65,7 +65,7 @@ icon-search {
 entry {
     background-color: transparent;
     text-color: #ffffffff;
-    placeholder: "Search apps, files, and commands";
+    placeholder: "Type to search  ·  Ctrl+←/→ switch tabs";
     placeholder-color: @muted-color;
     font: "Cantarell 12";
     horizontal-align: 0.0;

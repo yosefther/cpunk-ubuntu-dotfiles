@@ -28,7 +28,7 @@ This repository holds the configuration and integration scripts from my desktop.
 
 ### Launcher: one menu for everything
 
-Press **Super + Space**, start typing, and hit **Enter**. **Ctrl + ←/→** flips between **Apps**, **Windows**, **System**, and **Wallpapers**.
+Press **Super + Space**, start typing to search apps, and hit **Enter**. Press **Ctrl + →** once for **Web**: type a Google query and press **Enter**. Further tabs provide **Files** (browse and search the current folder), **Commands**, **Windows**, **System**, and **Wallpapers**.
 
 <img src="docs/media/launcher.gif" alt="Searching apps, then switching between the Apps, Windows, System, and Wallpapers tabs" width="100%">
 
@@ -100,7 +100,7 @@ Your first session, step by step. **Super** is the Windows-logo key.
 
 | Shortcut | Action |
 |---|---|
-| <kbd>Super</kbd> + <kbd>Space</kbd> | Apps menu: search plus Apps, Windows, System, and Wallpapers tabs |
+| <kbd>Super</kbd> + <kbd>Space</kbd> | Search apps; switch to Web for Google, or use Files, Commands, Windows, System, and Wallpapers |
 | <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>Space</kbd> | Open the same Apps menu |
 | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> / <kbd>Super</kbd> + <kbd>Enter</kbd> | Kitty terminal, attached to the main tmux session |
 | <kbd>Super</kbd> + <kbd>E</kbd> / <kbd>Super</kbd> + <kbd>B</kbd> | Files / Brave browser |
@@ -120,13 +120,13 @@ Your first session, step by step. **Super** is the Windows-logo key.
 | <kbd>Print Screen</kbd> | Select an area; copy the screenshot and save it under `~/Pictures/Screenshots` |
 | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | Cairo/Ptyxis fallback terminal |
 
-In the launcher, **Ctrl + ←/→** or **Ctrl + Tab / Ctrl + Shift + Tab** switches tabs, arrow keys select, **Enter** opens, and **Esc** closes. **Windows** jumps to a running app's workspace. **System** holds settings and session controls; log out, restart, and shutdown ask for confirmation.
+In the launcher, **Ctrl + ←/→** or **Ctrl + Tab / Ctrl + Shift + Tab** switches tabs, arrow keys select, **Enter** opens, and **Esc** closes. **Web** opens your typed query in Google. **Files** starts in your home folder and filters the current folder as you type. **Commands** searches installed executables. **Windows** jumps to a running app's workspace. **System** holds settings and session controls; log out, restart, and shutdown ask for confirmation.
 
 Clipboard history starts with the CpUnk session and keeps the 15 most recent text or image items locally. Open it with **Super + Shift + V**, the panel's **Clipboard** button, or **Apps → System → Clipboard history**.
 
 ## Customize
 
-The Rofi menu is a lightly glassy graphite Spotlight panel with a large search field, one vertical results list, clear application icons, signal-red selection, and persistent tabs. Settings uses the same near-black GTK palette with red navigation and control accents. The **System** tab includes Settings, Network, Sound, Files, Terminal, Help, and session controls; the panel's network and sound buttons use the same settings wrapper. GTK styling is saved in `~/.config/gtk-3.0/gtk.css` and `~/.config/gtk-4.0/gtk.css`.
+The Rofi menu is a lightly glassy graphite Spotlight panel with a large search field, one vertical results list, clear application icons, signal-red selection, and persistent tabs. Settings and the file picker use the same near-black GTK palette with red navigation and control accents. The **System** tab includes Settings, Network, Sound, Files, Terminal, Help, and session controls; the panel's network and sound buttons use the same settings wrapper. GTK styling is saved in `~/.config/gtk-3.0/gtk.css` and `~/.config/gtk-4.0/gtk.css`.
 
 | What | How |
 |---|---|
